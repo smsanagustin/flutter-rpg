@@ -12,10 +12,18 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Your Characters"),
+          title: const Text(
+            "Your Characters",
+          ),
           centerTitle: true,
         ),
         body: Container(
-            padding: const EdgeInsets.all(16), child: const Text("Hello")));
+          padding: const EdgeInsets.all(16),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            const Text("Character List"),
+            FilledButton(onPressed: () {}, child: const Text("Add character"))
+          ]),
+        ));
   }
 }
