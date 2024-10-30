@@ -11,6 +11,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List characters = [
+    'daenerys',
+    'jon',
+    'cersei',
+    'tyrion',
+    'arya',
+    'jaime',
+    'brandon'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,14 +34,26 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.all(16),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const StyledText("Character List"),
-            const StyledHeading("Character List"),
-            const StyledTitle("Character List"),
-            StyledButton(
-                onPressed: () {},
-                child: const StyledHeading(
-                  "CREATE NEW",
-                ))
+            Expanded(
+              child: ListView.builder(
+                itemCount: characters.length,
+                itemBuilder: (_, index) {
+                  return Container(
+                      color: Colors.grey[800],
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(bottom: 40),
+                      child: Text(characters[index]));
+                },
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 20),
+              child: StyledButton(
+                  onPressed: () {},
+                  child: const StyledHeading(
+                    "CREATE NEW",
+                  )),
+            )
           ]),
         ));
   }
