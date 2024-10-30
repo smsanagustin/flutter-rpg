@@ -13,6 +13,7 @@ class AppColors {
 
 ThemeData primaryTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+    fontFamily: 'Kanit',
 
     // scaffold color
     scaffoldBackgroundColor: AppColors.secondaryAccent,
