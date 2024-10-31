@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = const Uuid();
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -28,16 +32,18 @@ class _CreateState extends State<Create> {
   // submit handlers
   void handleSubmit() {
     if (_nameController.text.trim().isEmpty) {
-      print("Name must not be empty.");
       return;
     }
     if (_sloganController.text.trim().isEmpty) {
-      print("Slogan must not be empty.");
       return;
     }
 
-    print(_nameController.text);
-    print(_sloganController.text);
+    // create a new character if all fields have been filled
+    characters.add(Character(
+        vocation: selectedVocation,
+        name: _nameController.text.trim(),
+        slogan: _sloganController.text.trim(),
+        id: uuid.v4()));
   }
 
   // for updating vocations
@@ -130,6 +136,20 @@ class _CreateState extends State<Create> {
                       selected: selectedVocation == Vocation.ninja,
                       onTap: updateVocation,
                       vocation: Vocation.ninja),
+
+                  Center(
+                    child: Icon(Icons.code, color: AppColors.primaryColor),
+                  ),
+                  const Center(
+                    child: StyledText("Good luck!"),
+                  ),
+                  const Center(
+                    child: StyledText("Enjoy your journey..."),
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
 
                   StyledButton(
                       onPressed: handleSubmit,
