@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/character_card.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/create/create.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 
@@ -36,7 +37,10 @@ class _HomeState extends State<Home> {
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: StyledButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (ctx) => const Create()));
+                  },
                   child: const StyledHeading(
                     "CREATE NEW",
                   )),
