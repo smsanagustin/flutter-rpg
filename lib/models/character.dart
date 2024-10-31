@@ -10,6 +10,9 @@ class Character with Stats {
   final String id;
   bool _isFav = false; // default
 
+  // getter
+  bool get isFav => _isFav;
+
   // methods
   void toggleIsFav() {
     _isFav = !_isFav;
