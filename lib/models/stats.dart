@@ -28,13 +28,13 @@ mixin Stats {
       if (stat == "health") {
         _health++;
       }
-      if (stat == "health") {
+      if (stat == "attack") {
         _attack++;
       }
-      if (stat == "health") {
+      if (stat == "defense") {
         _defense++;
       }
-      if (stat == "health") {
+      if (stat == "skill") {
         _skill++;
       }
       _points--;

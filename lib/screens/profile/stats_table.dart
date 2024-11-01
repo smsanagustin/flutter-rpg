@@ -69,7 +69,11 @@ class _StatsTableState extends State<StatsTable> {
                     child: Padding(
                         padding: const EdgeInsets.all(8),
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                widget.character.increaseStat(stat['title']!);
+                              });
+                            },
                             icon: Icon(Icons.arrow_upward,
                                 color: AppColors.textColor)))),
 
@@ -79,7 +83,11 @@ class _StatsTableState extends State<StatsTable> {
                     child: Padding(
                         padding: const EdgeInsets.all(8),
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                widget.character.decreaseStat(stat['title']!);
+                              });
+                            },
                             icon: Icon(Icons.arrow_downward,
                                 color: AppColors.textColor)))),
               ]);
