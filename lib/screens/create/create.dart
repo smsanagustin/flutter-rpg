@@ -10,14 +10,14 @@ import 'package:uuid/uuid.dart';
 
 var uuid = const Uuid();
 
-class Create extends StatefulWidget {
-  const Create({super.key});
+class CreateScreen extends StatefulWidget {
+  const CreateScreen({super.key});
 
   @override
-  State<Create> createState() => _CreateState();
+  State<CreateScreen> createState() => _CreateScreenState();
 }
 
-class _CreateState extends State<Create> {
+class _CreateScreenState extends State<CreateScreen> {
   final _nameController = TextEditingController();
   final _sloganController = TextEditingController();
 
@@ -76,11 +76,11 @@ class _CreateState extends State<Create> {
     }
 
     // create a new character if all fields have been filled
-    characters.add(Character(
-        vocation: selectedVocation,
-        name: _nameController.text.trim(),
-        slogan: _sloganController.text.trim(),
-        id: uuid.v4()));
+    //characters.add(Character(
+    //    vocation: selectedVocation,
+    //    name: _nameController.text.trim(),
+    //    slogan: _sloganController.text.trim(),
+    //    id: uuid.v4()));
 
     // go back to home screen
     Navigator.push(context, MaterialPageRoute(builder: (ctx) => const Home()));

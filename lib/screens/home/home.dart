@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/character_card.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/create/create.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -27,19 +29,23 @@ class _HomeState extends State<Home> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (_, index) {
-                  return CharacterCard(characters[index]);
-                },
-              ),
+              child: Consumer<CharacterStore>(builder: (context, value, child) {
+                return ListView.builder(
+                  itemCount: value.characters.length,
+                  itemBuilder: (_, index) {
+                    return CharacterCard(value.characters[index]);
+                  },
+                );
+              }),
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: StyledButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (ctx) => const Create()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const CreateScreen()));
                   },
                   child: const StyledHeading(
                     "CREATE NEW",
