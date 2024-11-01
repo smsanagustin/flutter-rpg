@@ -11,33 +11,32 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          children: [
-            Image.asset("assets/img/vocations/${character.vocation.image}",
-                width: 80),
-            const SizedBox(
-              width: 20,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StyledHeading(character.name),
-                StyledText(character.vocation.title)
-              ],
-            ),
-            const Expanded(child: SizedBox()),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (ctx) => Profile(character: character)));
-                },
-                icon: Icon(Icons.arrow_forward, color: AppColors.textColor))
-          ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (ctx) => Profile(character: character)));
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Image.asset("assets/img/vocations/${character.vocation.image}",
+                  width: 80),
+              const SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StyledHeading(character.name),
+                  StyledText(character.vocation.title)
+                ],
+              ),
+              const Expanded(child: SizedBox()),
+              Icon(Icons.arrow_forward, color: AppColors.textColor)
+            ],
+          ),
         ),
       ),
     );
